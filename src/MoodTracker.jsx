@@ -6,14 +6,14 @@ function MoodTracker({ petEmoji }) {
 
   // Fetch moods when component loads
   useEffect(() => {
-    fetch("http://localhost:5000/api/moods")
+    fetch("https://mindset-retrain-backend.onrender.com/api/moods")
       .then(r => r.json())
       .then(data => setMoods(data));
   }, []);
 
   // Add mood to backend
   function addMood() {
-    fetch("http://localhost:5000/api/moods", {
+    fetch("https://mindset-retrain-backend.onrender.com/api/moods", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({mood: mood})
@@ -21,7 +21,7 @@ function MoodTracker({ petEmoji }) {
     .then(r => r.json())
     .then(data => {
       // Fetch updated list from backend
-      fetch("http://localhost:5000/api/moods")
+      fetch("https://mindset-retrain-backend.onrender.com/api/moods")
         .then(r => r.json())
         .then(data => setMoods(data));
     });

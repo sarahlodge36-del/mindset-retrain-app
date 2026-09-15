@@ -12,14 +12,14 @@ function Exercise({ petEmoji }) {
 
   // Fetch workouts when component loads
   useEffect(() => {
-    fetch("http://localhost:5000/api/exercises")
+    fetch("https://mindset-retrain-backend.onrender.com/api/exercises")
       .then(r => r.json())
       .then(data => setWorkouts(data));
   }, []);
 
   function addWorkout() {
     if (exerciseName && minutes && caloriesBurned) {
-      fetch("http://localhost:5000/api/exercises", {
+      fetch("https://mindset-retrain-backend.onrender.com/api/exercises", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name: exerciseName, minutes: parseInt(minutes), calories: parseInt(caloriesBurned)})
@@ -30,7 +30,7 @@ function Exercise({ petEmoji }) {
         setMinutes("");
         setCaloriesBurned("");
         // Fetch updated list
-        fetch("http://localhost:5000/api/exercises")
+        fetch("https://mindset-retrain-backend.onrender.com/api/exercises")
           .then(r => r.json())
           .then(data => setWorkouts(data));
       });
@@ -79,7 +79,6 @@ function Exercise({ petEmoji }) {
         />
         <button onClick={addWorkout}>Add Workout</button>
       </div>
-
       <h3>Today's Workouts:</h3>
       <ul>
         {workouts.map((workout, index) => (
@@ -87,9 +86,7 @@ function Exercise({ petEmoji }) {
         ))}
       </ul>
       <p><strong>Total: {totalMinutes} minutes, {totalCalories} calories burned</strong></p>
-
       <hr />
-
       <h3>BMI Calculator</h3>
       <div style={{marginBottom: "20px"}}>
         <input 

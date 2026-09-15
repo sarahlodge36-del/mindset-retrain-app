@@ -6,7 +6,7 @@ function Inspiration({ petEmoji }) {
 
   // Fetch inspirations from backend
   useEffect(() => {
-    fetch("http://localhost:5000/api/inspirations")
+    fetch("https://mindset-retrain-backend.onrender.com/api/inspirations")
       .then(r => r.json())
       .then(data => setInspirations(data));
   }, []);
@@ -25,7 +25,6 @@ function Inspiration({ petEmoji }) {
         <button onClick={() => setSelectedMood("struggling")}>😔 Struggling</button>
         <button onClick={() => setSelectedMood("lost")}>🌫️ Lost</button>
       </div>
-
       {selectedMood && inspirations[selectedMood] && (
         <div style={{background: "#f0f0f0", padding: "20px", borderRadius: "8px"}}>
           <p style={{fontSize: "1.2em", fontStyle: "italic"}}>{inspirations[selectedMood]}</p>

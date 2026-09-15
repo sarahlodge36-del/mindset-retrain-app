@@ -7,14 +7,14 @@ function Food({ petEmoji }) {
 
   // Fetch foods when component loads
   useEffect(() => {
-    fetch("http://localhost:5000/api/foods")
+    fetch("https://mindset-retrain-backend.onrender.com/api/foods")
       .then(r => r.json())
       .then(data => setFoods(data));
   }, []);
 
   function addFood() {
     if (foodName && calories) {
-      fetch("http://localhost:5000/api/foods", {
+      fetch("https://mindset-retrain-backend.onrender.com/api/foods", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name: foodName, calories: parseInt(calories)})
@@ -24,7 +24,7 @@ function Food({ petEmoji }) {
         setFoodName("");
         setCalories("");
         // Fetch updated list
-        fetch("http://localhost:5000/api/foods")
+        fetch("https://mindset-retrain-backend.onrender.com/api/foods")
           .then(r => r.json())
           .then(data => setFoods(data));
       });
@@ -56,7 +56,6 @@ function Food({ petEmoji }) {
         />
         <button onClick={addFood}>Add Food</button>
       </div>
-
       <h3>Today's Food:</h3>
       <ul>
         {foods.map((food, index) => (

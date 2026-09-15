@@ -7,7 +7,7 @@ function Mindset({ petEmoji }) {
 
   // Fetch affirmations from backend
   useEffect(() => {
-    fetch("http://localhost:5000/api/mindset")
+    fetch("https://mindset-retrain-backend.onrender.com/api/mindset")
       .then(r => r.json())
       .then(data => setAffirmations(data));
   }, []);
@@ -36,7 +36,6 @@ function Mindset({ petEmoji }) {
         <button onClick={() => handleCategoryClick("mistakes")}>Mistakes</button>
         <button onClick={() => handleCategoryClick("boundaries")}>Boundaries</button>
       </div>
-
       {affirmation && (
         <div>
           <div style={{background: "#f0f0f0", padding: "20px", borderRadius: "8px", marginBottom: "20px"}}>
